@@ -67,7 +67,7 @@ async def test_create_user_as_admin():
 @pytest.mark.anyio
 async def test_get_games():
     """Test getting available games"""
-    async with AsyncClient(app=app, base_url="http://test") as client:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         # Login as admin (any authenticated user can view games)
         login_response = await client.post("/api/auth/admin/login", json={
             "username": "admin_demo",
