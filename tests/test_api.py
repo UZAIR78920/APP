@@ -40,7 +40,7 @@ async def test_admin_login_invalid():
 @pytest.mark.anyio
 async def test_create_user_as_admin():
     """Test creating a user as admin"""
-    async with AsyncClient(app=app, base_url="http://test") as client:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         # Login as admin
         login_response = await client.post("/api/auth/admin/login", json={
             "username": "admin_demo",
