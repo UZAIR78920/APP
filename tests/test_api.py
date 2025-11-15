@@ -3,7 +3,7 @@ import pytest
 import sys
 from pathlib import Path
 import asyncio
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 sys.path.insert(0, str(Path(__file__).parent.parent / 'backend'))
 
