@@ -30,7 +30,7 @@ async def test_admin_login():
 @pytest.mark.anyio
 async def test_admin_login_invalid():
     """Test admin login with invalid credentials"""
-    async with AsyncClient(app=app, base_url="http://test") as client:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.post("/api/auth/admin/login", json={
             "username": "admin_demo",
             "password": "wrongpassword"
